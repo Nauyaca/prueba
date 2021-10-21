@@ -5,7 +5,7 @@ const { config } = require('./config/index')
 const {checkApiKey} = require('./middleware/auth.handler')
 const passport = require('passport')
 
-app.use(passport.initialize)
+app.use(passport.initialize())
 const port = config.port
 
 const mongoose = require('mongoose')
@@ -20,6 +20,12 @@ mongoose.connect(MONGO_URI,
   {useNewUrlParser: true, useUnifiedTopology: true}
 ).then(()=> console.log('Ya estamos conectados a THE HIVE')).catch(e=>console.log(e))
 
+app.use((req, res, next)=>{
+  console.log('Headers', req.headers)
+  console.log('Body', req.body)
+  console.log('User', req.user)
+  next()
+})
 
 require('./util/auth')
 

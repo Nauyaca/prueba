@@ -1,3 +1,5 @@
+const express = require('express')
+const passport = require('../util/auth')
 const router = express.Router()
 
 router.post('/login',

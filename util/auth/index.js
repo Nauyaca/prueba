@@ -1,4 +1,4 @@
-const passport = require ('password')
+const passport = require ('passport')
 const LocalStrategy = require('./strategies/local.strategies')
 
 passport.use(LocalStrategy)
